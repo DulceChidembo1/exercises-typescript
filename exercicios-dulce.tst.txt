@@ -1,0 +1,102 @@
+//exercicio 1
+
+let Name: string = "Dulce";
+const AGE: number = 24; 
+let dad: boolean = true;
+let dead: null = null; 
+let indifinido: undefined = undefined;
+
+// exercicio 2
+
+function sum(number1: number, number2: number): number {
+    return number1 + number2
+};
+
+// ercercicio 3
+function message (message:string): void {
+    console.log(message)
+}
+
+// exercicio 4 
+let sister: any; 
+  sister = "Numa"
+  sister = 3;
+  sister = false;
+
+  // ]exercicio 5
+  function dulce(value: unknown) {
+    if(typeof value === "string"){
+        console.log(typeof(value))
+    }
+  };
+
+  // exercicio 6
+  function valueType(value){
+    console.log(typeof(value))
+  }; 
+
+// Parte 2 – Arrays, Objetos, Type Aliases e Interfaces 
+//exercicio 7 
+
+function mean(value:number[]):number{
+    let soma:number=0;
+ for (let i=0;i<value.length;i++){
+    soma+=value[i];
+ }
+return soma/value.length
+}
+
+
+ //ecercicio 12
+//12. Transforme o type alias Pessoa do exercício anterior em uma interface.
+interface Pessoa {
+    name:string;
+    email:string;
+    phone:number;
+}
+
+//ecercicio 13
+//Combine dois tipos (Pessoa e Endereço) usando & e crie um objeto que contenha os dois.
+type person ={
+    name:string;
+    email:string;
+    phone:number;
+}
+
+type adress = {
+    streets:string;
+    flat: number;
+  
+}
+
+type combination = adress & person;
+
+const  my:combination={
+ name:"Isabel",
+ email:"isabel@gmal.com",
+ phone: 84744872777,
+ streets: "avenida Josina Macehl",
+ flat: 2
+}
+
+//Parte 3 – Enums, Union Types e Funções 
+// 14. 14. Crie um enum com os dias da semana. Escreva uma função que recebe um dia e retorna se é final de semana ou dia útil. 
+ 
+ enum weekdays{
+    Sunday="Sunday",
+    Monday="Monday",
+    Tuesday= "Tuesday",
+    Wednesday="Wednesday",
+    Thursday = " Thursday ",
+    Friday = "Friday",
+    Saturday = "Saturday"
+}
+
+const Verification = (day:string):string=>{
+    if (day===weekdays.Sunday|| day===weekdays.Saturday){
+        return "Final de Semana"
+        }else{return "Dia Util"}
+        }
+
+console.log(Verification("Friday"))*/
+
