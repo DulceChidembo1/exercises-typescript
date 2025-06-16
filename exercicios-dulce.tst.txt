@@ -1,4 +1,4 @@
-//exercicio 1
+//1. Declaração de variáveis com tipos:
 
 let Name: string = "Dulce";
 const AGE: number = 24; 
@@ -6,67 +6,99 @@ let dad: boolean = true;
 let dead: null = null; 
 let indifinido: undefined = undefined;
 
-// exercicio 2
+// 2.  Função soma:
 
-function sum(number1: number, number2: number): number {
-    return number1 + number2
+function sum(a: number, b: number): number {
+    return a + b;
 };
 
-// ercercicio 3
-function message (message:string): void {
-    console.log(message)
+// 3. Função com retorno void:
+function message (): void {
+    console.log("Well Come")
 }
 
-// exercicio 4 
-let sister: any; 
-  sister = "Numa"
-  sister = 3;
+//  4.  Tipo any:
+let sister: any =  5; 
+  sister = "Numa";
   sister = false;
 
-  // ]exercicio 5
-  function dulce(value: unknown) {
-    if(typeof value === "string"){
-        console.log(typeof(value))
+// 5. Tipo unknown com type guard:
+let data: unknow = "Hello";
+  
+if(typeof value === "string"){
+        console.log(data.toUpperCase());
     }
-  };
-
-  // exercicio 6
-  function valueType(value){
-    console.log(typeof(value))
-  }; 
+  
+// 6. Type inference:
+function tipoDeValor(valor: any) {
+  if (typeof valor === "string") {
+    console.log("É uma string.");
+  } else if (typeof valor === "number") {
+    console.log("É um número.");
+  } else if (typeof valor === "boolean") {
+    console.log("É um booleano.");
+  }
+}
+   
 
 // Parte 2 – Arrays, Objetos, Type Aliases e Interfaces 
-//exercicio 7 
+//7.  Média de array:
 
-function mean(value:number[]):number{
-    let soma:number=0;
- for (let i=0;i<value.length;i++){
-    soma+=value[i];
- }
-return soma/value.length
+function mean(numeros: number[]): number {
+  const total = numeros.reduce((acc, val) => acc + val, 0);
+  return total / numeros.length;
 }
+    
+// 8. Type alias com objeto: 
+type Person = {
+name: string; 
+age: number;
+active: boolean;
+};
+const pesron: person = {name: "Dulce", age: 24, active: true};
+
+//9.  Interface Produto:
+interface Product {
+name: string;
+price: number; 
+category: string
+}
+function describeProduct(product:product): string {
+return `${product.name} custa R$${product.price} e pertence à categoria ${product.category}.`;
+}
+
+// 10.  Produtos com preço acima de 100: 
+function filterProduct(products:Product[]): Product[] {
+return products.filter(p => p.price > 100);
+}
+
+// 11.Type alias Pessoa e array: 
+type Person = {
+name: string;
+email: string;
+phone: string;
+};
+
+const persons: Person[] = [
+{name: "Yunes", email: "yunes@gamil.com", phone: "856789987"}'
+{name: "Jaime", email: "jaime@gamil.com", phone: "877899879"},
+name: "Nathan", email: "Nathan@gamil.com", phone: "826789987"
+];
 
 
  //ecercicio 12
 //12. Transforme o type alias Pessoa do exercício anterior em uma interface.
 interface Pessoa {
     name:string;
-    email:string;
+    email:string;s
     phone:number;
 }
 
 //ecercicio 13
 //Combine dois tipos (Pessoa e Endereço) usando & e crie um objeto que contenha os dois.
-type person ={
-    name:string;
-    email:string;
-    phone:number;
-}
-
 type adress = {
     streets:string;
-    flat: number;
-  
+    flat: number; 
 }
 
 type combination = adress & person;
@@ -80,23 +112,75 @@ const  my:combination={
 }
 
 //Parte 3 – Enums, Union Types e Funções 
-// 14. 14. Crie um enum com os dias da semana. Escreva uma função que recebe um dia e retorna se é final de semana ou dia útil. 
+// 14. Crie um enum com os dias da semana. Escreva uma função que recebe um dia e retorna se é final de semana ou dia útil. 
  
  enum weekdays{
-    Sunday="Sunday",
-    Monday="Monday",
-    Tuesday= "Tuesday",
-    Wednesday="Wednesday",
-    Thursday = " Thursday ",
-    Friday = "Friday",
-    Saturday = "Saturday"
+  ,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday
+}
+ function dayType(day: Day): string {
+return day === Day.Saturday || Day === Dia.Sunday? "Final de Semana": "Dia Util";}
+
+15. // Niveis de Acesso 
+enum Acess {
+Admin, User, Guest
+}
+function permition(acess: Acess): string {
+switch(acess){
+case Acess.Admin.return "Aceso Total";
+case Acess.User: return "Acesso limitado";
+case Acess.Guest: return "Acesso restrito";
+}
 }
 
-const Verification = (day:string):string=>{
-    if (day===weekdays.Sunday|| day===weekdays.Saturday){
-        return "Final de Semana"
-        }else{return "Dia Util"}
-        }
+//16. Função com union type:
 
-console.log(Verification("Friday"))*/
+function tratarEntrada(valor:string | number): number {
+return typeof valor === "string"? valor.lenght: valor * valor;
+}
+
+//17. Função com parâmetros opcionais:
+
+function optionlSome(a?: number, a:?: number): number {
+if (a && b) return a + b;
+return 0;
+}
+
+//18.  Função com callback:
+
+function mapear(numbers: number[], fn:(n:number) =>number): numebr[]{
+return numbers.map(fn);
+}
+
+//19. Interface bankAccount:
+interface ContaBancaria {
+  number: string;
+  balance: number;
+  deposit(value: number): void;
+}
+
+const conta: BankAccount = {
+  numero: "123",
+  saldo: 500,
+  depositar(valor: number) {
+    this.saldo += valor;
+  }
+};
+
+//20. contact form:
+interface ContactForm {
+  nAme: string;
+  email: string;
+  mensage: string;
+}
+
+function sendForm(form: FormularioContato): void {
+  console.log(`Name: ${form.nome}\nEmail: ${form.email}\nMensage: ${form.mensage}`);
+}
 
